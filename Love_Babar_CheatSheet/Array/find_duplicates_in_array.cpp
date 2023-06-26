@@ -17,7 +17,7 @@ class Solution{
                 current=high;
             }
         }
-        
+       
         if(current<n-1) return -1;
         return step;
     }
