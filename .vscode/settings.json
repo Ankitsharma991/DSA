@@ -3,6 +3,7 @@
         "curr",
         "inorder",
         "levelorder",
+        "mydiam",
         "postorder",
         "preorder"
     ]
