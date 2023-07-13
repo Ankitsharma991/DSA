@@ -2,6 +2,8 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
+// Time complexity : O(V+E)
+
 public class BSF {
     static class Edge {
         int src;
@@ -39,9 +41,9 @@ public class BSF {
         graph[0].add(new Edge(5, 6));
     }
 
-    public static void bfs(ArrayList<Edge> graph[], int v) {
+    public static void bfs(ArrayList<Edge> graph[], int v, boolean visited[]) {
         Queue<Integer> q = new LinkedList<>();
-        boolean visited[] = new boolean[v];
+        // boolean visited[] = new boolean[v];
         q.add(graph[0].get(0).src);
 
         while (!q.isEmpty()) {
@@ -56,14 +58,20 @@ public class BSF {
                 }
             }
         }
-        System.out.println();
     }
 
     public static void main(String[] args) {
         int v = 7;
         ArrayList<Edge> graph[] = new ArrayList[v];
         createGraph(graph);
-        bfs(graph, v);
 
+        boolean visited[] = new boolean[v];
+        for (int i = 0; i < v; i++) {
+            if (visited[i] == false) {
+                bfs(graph, v, visited);
+            }
+        }
+        bfs(graph, v, visited);
+        System.out.println();
     }
 }
