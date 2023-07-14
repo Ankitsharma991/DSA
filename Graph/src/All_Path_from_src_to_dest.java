@@ -1,6 +1,6 @@
 import java.util.ArrayList;
-// 
-public class DFS {
+
+public class All_Path_from_src_to_dest {
     static class Edge {
         int src;
         int dest;
@@ -37,26 +37,42 @@ public class DFS {
         graph[0].add(new Edge(5, 6));
     }
 
-    public static void dfs(ArrayList<Edge> graph[], int curr, boolean visited[]) {
-        System.out.print(curr + " ");
-        visited[curr] = true;
+    // public static void dfs(ArrayList<Edge> graph[], int curr, boolean visited[])
+    // {
+    // System.out.print(curr + " ");
+    // visited[curr] = true;
+
+    // for (int i = 0; i < graph[curr].size(); i++) {
+    // Edge e = graph[curr].get(i);
+    // if (visited[e.dest] == false) {
+    // dfs(graph, e.dest, visited);
+    // }
+    // }
+    // }
+
+    public static void printAllPath(ArrayList<Edge> graph[], boolean visited[], int curr, String path, int tar) {
+        if (curr == tar) {
+            System.out.println(path);
+            return;
+        }
 
         for (int i = 0; i < graph[curr].size(); i++) {
             Edge e = graph[curr].get(i);
-            if (visited[e.dest] == false) {
-                dfs(graph, e.dest, visited);
+            if (!visited[e.dest]) {
+                visited[curr] = true;
+                printAllPath(graph, visited, e.dest, path + e.dest, tar);
+                visited[curr] = false;
             }
         }
     }
 
     public static void main(String[] args) {
         int v = 7;
+        int src = 0;
+        int tar = 5;
         ArrayList<Edge> graph[] = new ArrayList[v];
         createGraph(graph);
 
-        boolean visited[] = new boolean[v];
-        dfs(graph, 0, visited);
-        System.out.println();
-
+        printAllPath(graph, new boolean[v], src, "0", tar);
     }
 }

@@ -15,9 +15,12 @@ public class GraphTraversal {
     */
 
 
-    // Depth First Search
-    /*
-     * 
+    // Depth First Search (Keep going to the first neighbour)
+    /*  use Recursion
+     * Start from a node
+     * print that node
+     * move to another node
+     * print that node too and keep this process till all node are not traversed
      */
     
 }
