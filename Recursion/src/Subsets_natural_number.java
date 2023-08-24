@@ -24,9 +24,7 @@ public class Subsets_natural_number {
         // on not adding
         subset.remove(subset.size() - 1);
         findSubsets(n - 1, subset);
-    }
-
-    public static void main(String[] args) {
+    }    public static void main(String[] args) {
         int n = 3;
         ArrayList<Integer> subset = new ArrayList<>();
         findSubsets(n, subset);
