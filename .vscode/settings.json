@@ -4,6 +4,8 @@
         "inorder",
         "levelorder",
         "mydiam",
+        "nlogn",
+        "pidx",
         "postorder",
         "preorder"
     ]

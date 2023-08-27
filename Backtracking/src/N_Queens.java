@@ -67,9 +67,9 @@ public class N_Queens {
             row = "";
             for (int j = 0; i < board.length; j++) {
                 if (board[i][j] == 'Q') {
-                    row += 'Q';
+                   row += 'Q';
                 } else {
-                    row += '.';
+                   row += '.';
                 }
             }
             board2.add(row);
