@@ -60,11 +60,9 @@ public class BinaryTree {
 
     // Level-order Traversal
     public static void levelorder(Node root) {
-
         if (root == null) {
             return;
         }
-
         Queue<Node> q = new LinkedList<>();
         q.add(root);
         q.add(null);
@@ -122,51 +120,84 @@ public class BinaryTree {
         return myHeight;
     }
 
-    public static int diameter(Node root){  //N^2 time
-        if(root == null){
+    public static int diameter(Node root) { // N^2 time
+        if (root == null) {
             return 0;
         }
         int left = diameter(root.left);
         int right = diameter(root.right);
-        int tDiameter = height(root.left)+height(root.right)+1;
+        int tDiameter = height(root.left) + height(root.right) + 1;
         int dia = Math.max(tDiameter, Math.max(left, right));
         return dia;
     }
 
-    static class TreeInfo{
+    static class TreeInfo {
         int ht;
         int diam;
-         TreeInfo(int ht, int diam){
+
+        TreeInfo(int ht, int diam) {
             this.ht = ht;
             this.diam = diam;
-         }
+        }
     }
 
-    public static TreeInfo diameter2(Node root){
-        if(root==null){
-            return new TreeInfo(0,0);
+    public static TreeInfo diameter2(Node root) {
+        if (root == null) {
+            return new TreeInfo(0, 0);
 
         }
         TreeInfo left = diameter2(root.left);
         TreeInfo right = diameter2(root.right);
 
-        int myHeight = Math.max(left.ht, right.ht) +1;
+        int myHeight = Math.max(left.ht, right.ht) + 1;
 
         int diam1 = left.diam;
         int diam2 = right.diam;
-        int diam3 = left.ht + right.ht +1;
+        int diam3 = left.ht + right.ht + 1;
 
-        int mydiam = Math.max(Math.max(diam1,diam2), diam3);
+        int mydiam = Math.max(Math.max(diam1, diam2), diam3);
 
         TreeInfo myInfo = new TreeInfo(myHeight, mydiam);
         return myInfo;
     }
 
+    public static boolean isIdentical(Node root, Node subRoot) {
+        if (root == null && subRoot == null) {
+            return true;
+        }
+        if (root == null || subRoot == null) {
+            return false;
+        }
+        if (root.data == subRoot.data) {
+            return isIdentical(root.left, subRoot.left) && isIdentical(root.right, subRoot.right);
+        }
+        return false;
+    }
+
+    public static boolean isSubtree(Node root, Node subRoot) {
+        if (subRoot == null) {
+            return true;
+        }
+        if (root == null) {
+            return false;
+        }
+        if (root.data == subRoot.data) {
+            if (isIdentical(root, subRoot))
+                ;
+            return true;
+        }
+        return isSubtree(root.left, subRoot) || isSubtree(root.right, subRoot);
+    }
+
     public static void main(String[] args) {
         int node[] = { 1, 2, 4, -1, -1, 5, -1, -1, 3, -1, 6, -1, -1 };
+        int subNode[] = { 3, -1, 6, -1, -1 };
         BinaryTree2 tree = new BinaryTree2();
+        BinaryTree2 tree2 = new BinaryTree2();
         Node root = tree.buildTree(node);
+        Node subRoot = tree2.buildTree(subNode);
         // System.out.println(root.data);
+        // root.left.left.data = 9;
         // preorder(root);
         // inorder(root);
         // postorder(root);
@@ -176,7 +207,7 @@ public class BinaryTree {
         // System.out.println(height(root));
         // System.out.println(diameter(root));
         // System.out.println(diameter2(root).diam);
-        System.out.println();
+        System.out.println(isSubtree(root, subRoot));
+        // System.out.println();
     }
-
 }
