@@ -1,4 +1,4 @@
-// Selection Sort -> O(n^2)
+// insertion Sort -> O(n^2)
 #include <iostream>
 using namespace std;
 void insertion_sort(int arr[], int n)
