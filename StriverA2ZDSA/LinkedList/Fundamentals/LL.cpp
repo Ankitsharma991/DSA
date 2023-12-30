@@ -11,7 +11,7 @@ public:
     {
         this->data = data;
         this->next = next;
-    }
+    };
 
 public:
     Node(int data)
