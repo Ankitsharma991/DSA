@@ -14,9 +14,3 @@ public:
         right = NULL;
     }
 };
-
-int main()
-{
-
-    return 0;
-}
