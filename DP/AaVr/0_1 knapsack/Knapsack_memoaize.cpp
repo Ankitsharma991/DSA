@@ -34,7 +34,7 @@ int main()
     vector<int> a = {1, 2, 3, 4, 5};
     vector<int> v = {2, 4, 5, 6, 7};
     int w = 5;
-    
+   
     // Initialize dp with 0 values
     vector<vector<int>> dp(a.size() + 1, vector<int>(w + 1, 0));
 
