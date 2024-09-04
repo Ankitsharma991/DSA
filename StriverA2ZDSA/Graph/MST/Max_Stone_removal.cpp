@@ -6,7 +6,7 @@ class Solution
 public:
     int maxRemove(vector<vector<int>> &stones, int n)
     {
-        
+        //    code here
     }
 }
 
